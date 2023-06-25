@@ -1,5 +1,5 @@
 ---
-title: "プリレンダリングについて"
+title: "破壊神まるちゃん"
 date: "2020-02-21"
 thumbnail: "/images/thumbnail04.jpg"
 ---
