@@ -5,9 +5,25 @@ import Head from 'next/head'
 import Layout from "../components/Layout";
 import utilStyles from "../styles/utils.module.css"
 import homeStyles from "../styles/Home.module.css"
+import {getPostData} from "../lib/post";
+
+
+
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+// SSGの場合
+export async function getStaticProps(){
+  const allPostsData = getPostData(); // メタデータが入ってる
+  console.log(allPostsData);
+
+  return {
+    props:{
+      allPostsData,
+    },
+  };
+}
+
+export default function Home({allPostsData}) {
   return (
     <Layout>
       <section className={utilStyles.headingMd}>
@@ -20,62 +36,24 @@ export default function Home() {
         <h2>📝犬好きなエンジニアのブログ</h2>
 
         <div className={homeStyles.grid}>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail01.jpg" 
+          {allPostsData.map(({id,title,date,thumbnail}) =>(
+            <article key={id}>
+            <Link href={`/posts/${id}`}>
+              <img src={`${thumbnail}`}
               className={homeStyles.thumbnailImage} />
             </Link>
             {/* legacyBehaviorを使うことでaタグをLINKに内包できる */}
-            <Link legacyBehavior href="/">
-            <a className={utilStyles.boldText}>まるちゃんはなぜこんな可愛いのか</a>
+            <Link legacyBehavior href={`/posts/${id}`}>
+            <a className={utilStyles.boldText}>{title}</a>
             </Link>
             <br />
             <small className={utilStyles.lightText}>
-              June 25, 2023
+              {date}
             </small>
           </article>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail02.jpg" 
-              className={homeStyles.thumbnailImage} />
-            </Link>
-            {/* legacyBehaviorを使うことでaタグをLINKに内包できる */}
-            <Link legacyBehavior href="/">
-            <a className={utilStyles.boldText}>まるちゃんの食欲について</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              June 25, 2023
-            </small>
-          </article>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail03.jpeg" 
-              className={homeStyles.thumbnailImage} />
-            </Link>
-            {/* legacyBehaviorを使うことでaタグをLINKに内包できる */}
-            <Link legacyBehavior href="/">
-            <a className={utilStyles.boldText}>破壊神まるちゃん</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              June 25, 2023
-            </small>
-          </article>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail01.jpg" 
-              className={homeStyles.thumbnailImage} />
-            </Link>
-            {/* legacyBehaviorを使うことでaタグをLINKに内包できる */}
-            <Link legacyBehavior href="/">
-            <a className={utilStyles.boldText}>まるちゃんが好きなおもちゃ</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              June 25, 2023
-            </small>
-          </article>
+          ))}
+          
+          
         </div>
       </section>
       

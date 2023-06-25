@@ -8,6 +8,8 @@ APIエンドポイント設計もできる
 
 ・プリレンダリングとは
 HTMLが事前に構成されている
+JavaScriptを無効にしてもOK
+ユーザーが安心できる
 
 ・SSG,SSR
 Static Site Generator
