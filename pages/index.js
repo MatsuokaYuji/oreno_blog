@@ -66,7 +66,6 @@ export default function Home({allPostsData}) {
           ))}
         </div>
       </section>
-      <a href="">hiiiiiiii!</a>
       </Layout>
   );
 }
