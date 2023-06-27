@@ -14,6 +14,8 @@ function Layout({children,home}) {
         <title>{siteTitle}</title>
         <meta name="desc" content="width=device-width, initial-scale"></meta>
         <link rel="icon" href="/favicon.ico"/>
+        <Link href="/qiita" className={utilStyles.lightText}>→Qiitaページへ</Link>
+        
         </Head>
         <header className={styles.header}>
             {home ? (

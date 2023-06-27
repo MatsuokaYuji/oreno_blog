@@ -33,3 +33,15 @@ layout_container__...。
 これがCSS モジュールの機能です。一意のクラス名が自動的に生成されます。
 CSS モジュールを使用している限り、クラス名の衝突を心配する必要はありません。
 さらに、Next.js のコード分割機能はCSS モジュールでも機能します。これにより、各ページにロードされる CSS の量が最小限に抑えられます。これにより、バンドル サイズが小さくなります。
+
+
+zshでcurl投げた時のエラー解決
+https://qiita.com/ponsuke0531/items/8dd9ba566a13edc03fe2
+
+1ページあたり50件の記事の1ページを取得。つまり50件
+curl  "https://qiita.com/api/v2/items?page=1&per_page=50"
+
+https://qiita.com/api/v2/items?page=1&per_page=50&query=created:>2023-05-25+stocks:>20
+
+
+curl  "https://qiita.com/api/v2/items?page=1&per_page=50&query=created:>2023-05-25+stocks:>20"

@@ -7,6 +7,9 @@ import utilStyles from "../styles/utils.module.css"
 import homeStyles from "../styles/Home.module.css"
 import {getPostsData} from "../lib/post";
 
+import { getQiitaPosts } from '../lib/api'
+
+
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,11 +17,13 @@ const inter = Inter({ subsets: ['latin'] })
 // SSGの場合
 export async function getStaticProps(){
   const allPostsData = getPostsData(); // メタデータが入ってる
-  console.log(allPostsData);
+  // console.log(allPostsData);
+  const qiita = await getQiitaPosts();
 
   return {
     props:{
       allPostsData,
+      qiita,
     },
   };
 }
@@ -32,7 +37,7 @@ export async function getStaticProps(){
 //   };
 // }
 
-export default function Home({allPostsData}) {
+export default function Home({allPostsData,qiita}) {
   return (
     <Layout home>
       <Head>
@@ -64,8 +69,34 @@ export default function Home({allPostsData}) {
             </small>
           </article>
           ))}
-        </div>
+          </div>
+          {/* <h2>⭐️Qiita Trend</h2>
+          <div className={homeStyles.grid}>
+
+          {qiita.map(({id,title,url,created_at,user}) => (
+            <article key={id}>
+              <Link legacyBehavior href={url}>
+              <a className={utilStyles.boldText}>{title}</a>
+              </Link>
+              <Link href={user.website_url}>
+              <img src={`${user.profile_image_url}`}
+              className={homeStyles.qiitaThumbnailImage} />
+              </Link>
+            
+            <small className={utilStyles.lightText}>
+              {created_at}
+            </small>
+            </article>
+          ))}
+        </div> */}
       </section>
       </Layout>
   );
 }
+
+
+// // rendered_body, body, coediting, 
+// comments_count, created_at, group, id, 
+// likes_count, private, reactions_count, 
+// stocks_count, tags, title, updated_at, url,
+//  user, page_views_count, team_membership, organization_url_name

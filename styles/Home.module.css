@@ -34,3 +34,13 @@
     margin: 0 auto;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
+
+  .qiitaThumbnailImage {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    box-shadow: 4px 5px 12px black;
+    transition: all 0.3s;
+    cursor: pointer;
+    border-radius: 50%;
+  }
