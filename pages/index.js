@@ -7,8 +7,6 @@ import utilStyles from "../styles/utils.module.css"
 import homeStyles from "../styles/Home.module.css"
 import {getPostsData} from "../lib/post";
 
-import { getQiitaPosts } from '../lib/api'
-
 
 
 
@@ -18,12 +16,12 @@ const inter = Inter({ subsets: ['latin'] })
 export async function getStaticProps(){
   const allPostsData = getPostsData(); // メタデータが入ってる
   // console.log(allPostsData);
-  const qiita = await getQiitaPosts();
+  // const qiita = await getQiitaPosts();
 
   return {
     props:{
       allPostsData,
-      qiita,
+      // qiita,
     },
   };
 }
@@ -37,7 +35,7 @@ export async function getStaticProps(){
 //   };
 // }
 
-export default function Home({allPostsData,qiita}) {
+export default function Home({allPostsData}) {
   return (
     <Layout home>
       <Head>
