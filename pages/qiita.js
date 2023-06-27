@@ -42,8 +42,8 @@ export default function Home({allPostsData,qiita}) {
             <h2>⭐️Qiita Trend</h2>
             <div className={homeStyles.grid}>
   
-            {qiita.map(({title,url,created_at,user}) => (
-              <article >
+            {qiita.map(({id,title,url,created_at,user}) => (
+              <article key={id}>
                 <Link legacyBehavior href={url}>
                 <a className={utilStyles.boldText}>{title}</a>
                 </Link>
