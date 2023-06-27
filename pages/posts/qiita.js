@@ -2,11 +2,11 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import Head from 'next/head'
-import Layout, { siteTitle } from "../components/Layout";
-import utilStyles from "../styles/utils.module.css"
-import homeStyles from "../styles/Home.module.css"
+import Layout, { siteTitle } from "../../components/Layout";
+import utilStyles from "../../styles/utils.module.css"
+import homeStyles from "../../styles/Home.module.css"
 
-import { getQiitaPosts } from '../lib/api'
+import { getQiitaPosts } from '../../lib/api'
 
 
 
@@ -26,7 +26,7 @@ export async function getStaticProps(){
   };
 }
 
-export default function Home({allPostsData,qiita}) {
+export default function Qiita({qiita}) {
     return (
       <Layout >
         <Head>
